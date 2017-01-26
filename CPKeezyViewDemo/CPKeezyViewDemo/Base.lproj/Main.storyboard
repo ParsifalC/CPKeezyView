@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fa1-zw-4aA">
-                                <rect key="frame" x="162.5" y="308" width="50" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fa1-zw-4aA" customClass="CPKeezyView" customModule="CPKeezyViewDemo" customModuleProvider="target">
+                                <rect key="frame" x="147.5" y="293" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2o0-AT-Izy"/>
-                                    <constraint firstAttribute="width" constant="50" id="hV1-du-cpx"/>
+                                    <constraint firstAttribute="height" constant="80" id="2o0-AT-Izy"/>
+                                    <constraint firstAttribute="width" constant="80" id="hV1-du-cpx"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="25"/>
+                                        <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
