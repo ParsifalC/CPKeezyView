@@ -23,7 +23,7 @@ open class CPKeezyView: UIView {
     let zoomOutKey = "zoomout"
     let rotateKey = "rotate"
     let reverseRotateKey = "reverserotate"
-    let duration = 0.3
+    let duration = 0.2
     let scaleFactor = 10.0
     let radius: CGFloat = 13
     
@@ -52,7 +52,7 @@ open class CPKeezyView: UIView {
         let undoBtn = createScalableBtn(image: UIImage.init(named: "petal_undo_100x100_"))
         
         // layout
-        CPKeezyView.circleLayout(subviews: [addBtn, listBtn, settingBtn, jamBtn, deleteBtn, undoBtn], superView: containerView, radius: radius)
+        CPKeezyView.circleLayout(subviews: [addBtn, jamBtn, deleteBtn, listBtn, settingBtn, undoBtn], superView: containerView, radius: radius)
     }
     
     // MARK: - Action
@@ -70,13 +70,6 @@ open class CPKeezyView: UIView {
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         endAnimations()
-    }
-    
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if state != .zoomed {
-            return super.hitTest(point, with: event)
-        }
-        return self
     }
     
     func startAnimations() {
@@ -162,19 +155,20 @@ open class CPKeezyView: UIView {
 
 extension CPKeezyView: CAAnimationDelegate {
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-//        if flag && anim==layer.animation(forKey: zoomInKey) {
-//            frame = layer.presentation()?.frame ?? frame
-//            containerView.frame = containerView.layer.presentation()?.frame ?? containerView.frame
-//            let sublayers = containerView.layer.presentation()?.sublayers ?? [CALayer]()
-//            for index in 0..<sublayers.count {
-//                let view: UIView = containerView.subviews[index]
-//                let sublayer: CALayer = sublayers[index]
-//                view.frame = sublayer.frame
-//            }
-//            containerView.alpha = 1
-//            print(containerView.frame)
-//        } else if flag && anim==containerView.layer.animation(forKey: rotateKey) {
-//        }
+        if flag && anim==layer.animation(forKey: zoomInKey) {
+        } else if flag && anim==containerView.layer.animation(forKey: rotateKey) {
+            transform = CGAffineTransform.init(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
+            containerView.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
+            containerView.alpha = 1
+        }
+    }
+    
+    public func animationDidStart(_ anim: CAAnimation) {
+        if anim==layer.animation(forKey: zoomOutKey) {
+            transform = CGAffineTransform.identity
+            containerView.transform = CGAffineTransform.identity
+            containerView.alpha = 0
+        }
     }
 }
 
