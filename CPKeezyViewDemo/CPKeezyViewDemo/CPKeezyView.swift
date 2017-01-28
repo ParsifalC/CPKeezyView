@@ -52,7 +52,7 @@ open class CPKeezyView: UIView {
         let undoBtn = createScalableBtn(image: UIImage.init(named: "petal_undo_100x100_"))
         
         // layout
-        CPKeezyView.circleLayout(subviews: [addBtn, jamBtn, deleteBtn, listBtn, settingBtn, undoBtn], superView: containerView, radius: radius)
+        CPKeezyView.circleLayout(subviews: [addBtn, undoBtn, deleteBtn, jamBtn, settingBtn, listBtn], superView: containerView, radius: radius)
     }
     
     // MARK: - Action
