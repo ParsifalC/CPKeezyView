@@ -52,7 +52,10 @@ open class CPKeezyView: UIView {
         let undoBtn = createScalableBtn(image: UIImage.init(named: "petal_undo_100x100_"))
         
         // layout
-        CPKeezyView.circleLayout(subviews: [addBtn, undoBtn, deleteBtn, jamBtn, settingBtn, listBtn], superView: containerView, radius: radius)
+        for btn: CPScalableButton in [addBtn, undoBtn, deleteBtn, jamBtn, settingBtn, listBtn] {
+            containerView.addSubview(btn)
+        }
+        containerView.layoutSubviewsCircularly(radius: radius)
     }
     
     // MARK: - Action
@@ -172,15 +175,14 @@ extension CPKeezyView: CAAnimationDelegate {
     }
 }
 
-extension CPKeezyView {
-    static open func circleLayout(subviews: [UIView], superView: UIView, radius: CGFloat) {
-        let center = CGPoint(x: superView.bounds.width/2, y: superView.bounds.height/2)
+extension UIView {
+    open func layoutSubviewsCircularly(radius: CGFloat) {
+        let center = CGPoint(x: bounds.width/2, y: bounds.height/2)
         let arc:CGFloat = CGFloat(M_PI)*2.0/CGFloat(subviews.count)
         
         for index in 0..<subviews.count {
             let view: UIView = subviews[index]
             let currentArc = CGFloat(index)*arc
-            superView.addSubview(view)
             view.center = CGPoint(x: center.x+radius*sin(currentArc), y: center.y+radius*cos(currentArc))
         }
     }
