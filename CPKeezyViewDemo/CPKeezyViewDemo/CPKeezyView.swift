@@ -126,13 +126,14 @@ open class CPKeezyView: UIView {
         rotateAnimation.toValue = reverse ? 0 : arc
         
         let opacityAnimation = CABasicAnimation.init(keyPath: "opacity")
-        opacityAnimation.fromValue = reverse ? 1 : 0
-        opacityAnimation.toValue = reverse ? 0 : 1
+        opacityAnimation.fromValue = reverse ? 1.0 : 0
+        opacityAnimation.toValue = reverse ? 0 : 1.0
         
         let groupAnimation = CAAnimationGroup()
         groupAnimation.isRemovedOnCompletion = reverse ? true : false
         groupAnimation.fillMode = reverse ? kCAFillModeRemoved : kCAFillModeForwards
-        groupAnimation.duration = duration
+        groupAnimation.duration = duration+0.1
+        groupAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
         groupAnimation.animations = [rotateAnimation, opacityAnimation]
         groupAnimation.delegate = self
         return groupAnimation
@@ -158,8 +159,7 @@ open class CPKeezyView: UIView {
 
 extension CPKeezyView: CAAnimationDelegate {
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        if flag && anim==layer.animation(forKey: zoomInKey) {
-        } else if flag && anim==containerView.layer.animation(forKey: rotateKey) {
+        if flag && anim==containerView.layer.animation(forKey: rotateKey) {
             transform = CGAffineTransform.init(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
             containerView.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
             containerView.alpha = 1
