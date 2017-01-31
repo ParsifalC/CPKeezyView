@@ -44,12 +44,12 @@ open class CPKeezyView: UIView {
         containerView.alpha = 0
         
         // buttons
-        let addBtn = createScalableBtn(image: UIImage.init(named: "petal_newBoard_100x100_"))
-        let listBtn = createScalableBtn(image: UIImage.init(named: "petal_boardList_100x100_"))
-        let settingBtn = createScalableBtn(image: UIImage.init(named: "petal_settings_100x100_"))
-        let jamBtn = createScalableBtn(image: UIImage.init(named: "petal_jam_100x100_"))
-        let deleteBtn = createScalableBtn(image: UIImage.init(named: "petal_deleteBoard_100x100_"))
-        let undoBtn = createScalableBtn(image: UIImage.init(named: "petal_undo_100x100_"))
+        let addBtn = createScalableBtn(image: UIImage(named: "petal_newBoard_100x100_"))
+        let listBtn = createScalableBtn(image: UIImage(named: "petal_boardList_100x100_"))
+        let settingBtn = createScalableBtn(image: UIImage(named: "petal_settings_100x100_"))
+        let jamBtn = createScalableBtn(image: UIImage(named: "petal_jam_100x100_"))
+        let deleteBtn = createScalableBtn(image: UIImage(named: "petal_deleteBoard_100x100_"))
+        let undoBtn = createScalableBtn(image: UIImage(named: "petal_undo_100x100_"))
         
         // layout
         for btn: CPScalableButton in [addBtn, undoBtn, deleteBtn, jamBtn, settingBtn, listBtn] {
@@ -107,7 +107,7 @@ open class CPKeezyView: UIView {
     
     // MARK: Getter
     func zoomInAnimation(reverse: Bool) -> CAAnimation {
-        let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale")
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = reverse ? scaleFactor : 1.0
         scaleAnimation.toValue = reverse ? 1.0 : scaleFactor
         scaleAnimation.isRemovedOnCompletion = false
@@ -121,11 +121,11 @@ open class CPKeezyView: UIView {
     func rotateAnimation(reverse: Bool) -> CAAnimation {
         // rotate 2*arc
         let arc = M_PI//(2.0*M_PI/Double(containerView.subviews.count))*2.0
-        let rotateAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z")
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotateAnimation.fromValue = reverse ? arc : 0
         rotateAnimation.toValue = reverse ? 0 : arc
         
-        let opacityAnimation = CABasicAnimation.init(keyPath: "opacity")
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
         opacityAnimation.fromValue = reverse ? 1.0 : 0
         opacityAnimation.toValue = reverse ? 0 : 1.0
         
@@ -133,14 +133,14 @@ open class CPKeezyView: UIView {
         groupAnimation.isRemovedOnCompletion = reverse ? true : false
         groupAnimation.fillMode = reverse ? kCAFillModeRemoved : kCAFillModeForwards
         groupAnimation.duration = duration+0.1
-        groupAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         groupAnimation.animations = [rotateAnimation, opacityAnimation]
         groupAnimation.delegate = self
         return groupAnimation
     }
     
     func zoomoutAnimation(fromValue: Any?, toValue: Any?) -> CAAnimation {
-        let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale")
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = fromValue
         scaleAnimation.toValue = toValue
         scaleAnimation.isRemovedOnCompletion = true
@@ -151,7 +151,7 @@ open class CPKeezyView: UIView {
     }
     
     func createScalableBtn(image: UIImage?) -> CPScalableButton {
-        let btn = CPScalableButton.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        let btn = CPScalableButton(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         btn.setImage(image, for: .normal)
         return btn
     }
@@ -160,8 +160,8 @@ open class CPKeezyView: UIView {
 extension CPKeezyView: CAAnimationDelegate {
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag && anim==containerView.layer.animation(forKey: rotateKey) {
-            transform = CGAffineTransform.init(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
-            containerView.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
+            transform = CGAffineTransform(scaleX: CGFloat(scaleFactor), y: CGFloat(scaleFactor))
+            containerView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI))
             containerView.alpha = 1
         }
     }
