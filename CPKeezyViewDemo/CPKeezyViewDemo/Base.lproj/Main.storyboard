@@ -21,6 +21,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QKq-VK-u0x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ER5-Xp-rKl">
+                                    <size key="itemSize" width="187.5" height="167"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="Kyv-FK-eJj">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="167"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="167"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmJ-9p-D3r" customClass="CPScalableButton" customModule="CPKeezyViewDemo" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="188" height="167"/>
+                                                    <color key="backgroundColor" red="1" green="0.30186998929529196" blue="0.21682490596899995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="OmJ-9p-D3r" secondAttribute="trailing" id="Mev-fE-1Br"/>
+                                            <constraint firstAttribute="bottom" secondItem="OmJ-9p-D3r" secondAttribute="bottom" id="opH-w1-QGZ"/>
+                                            <constraint firstItem="OmJ-9p-D3r" firstAttribute="leading" secondItem="Kyv-FK-eJj" secondAttribute="leading" id="pCU-AC-64y"/>
+                                            <constraint firstItem="OmJ-9p-D3r" firstAttribute="top" secondItem="Kyv-FK-eJj" secondAttribute="top" id="x1w-xW-EMh"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="JmF-NG-3TP"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="be9-q1-t8K"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fa1-zw-4aA" customClass="CPKeezyView" customModule="CPKeezyViewDemo" customModuleProvider="target">
                                 <rect key="frame" x="147.5" y="293" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,14 +73,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="QKq-VK-u0x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dkq-5e-a7f"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QKq-VK-u0x" secondAttribute="bottom" id="Qyt-XB-UFN"/>
+                            <constraint firstItem="QKq-VK-u0x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XO9-Cz-G8z"/>
                             <constraint firstItem="fa1-zw-4aA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zu0-Su-cRh"/>
+                            <constraint firstAttribute="trailing" secondItem="QKq-VK-u0x" secondAttribute="trailing" id="iHZ-71-7he"/>
                             <constraint firstItem="fa1-zw-4aA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q9a-li-9fK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="QKq-VK-u0x" id="pe2-1G-axs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="-54" y="-53"/>
         </scene>
     </scenes>
 </document>
