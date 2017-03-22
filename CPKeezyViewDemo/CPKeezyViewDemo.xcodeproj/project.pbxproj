@@ -129,7 +129,7 @@
 				TargetAttributes = {
 					90150BFF1E38CDB5008148A0 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 558X9W8374;
+						DevelopmentTeam = YDM4SFSM7Z;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -343,11 +343,11 @@
 			baseConfigurationReference = 86663ED3738F5751630CFB4C /* Pods-CPKeezyViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = YDM4SFSM7Z;
 				INFOPLIST_FILE = CPKeezyViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPKeezyViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPKeezyView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -358,11 +358,11 @@
 			baseConfigurationReference = F9D1C09AF59F6F5BD6422A74 /* Pods-CPKeezyViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 558X9W8374;
+				DEVELOPMENT_TEAM = YDM4SFSM7Z;
 				INFOPLIST_FILE = CPKeezyViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPKeezyViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Parsifal.CPKeezyView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
